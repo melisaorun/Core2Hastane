@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Core2Hastane.model.Doktorlar>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Yeni Doktor</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DoktorAdSoyad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Unvan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Randevular)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoktorAdSoyad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Unvan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Randevular.HastaAdiSoyadi)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DoktorId">Edit</a> |
+               
+                <a asp-action="Delete" asp-route-id="@item.DoktorId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

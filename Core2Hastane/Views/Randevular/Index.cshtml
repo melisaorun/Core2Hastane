@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Core2Hastane.model.Randevular>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/LayoutAdmin.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Yeni Randevu</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.HastaAdiSoyadi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BolumAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DoktorAdSoyad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RandevuTarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RandevuSaati)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.HastaAdiSoyadi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BolumAdi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoktorAdSoyad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RandevuTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RandevuSaati)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RandevuId">Edit</a> |
+              
+                <a asp-action="Delete" asp-route-id="@item.RandevuId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
